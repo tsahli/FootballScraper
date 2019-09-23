@@ -33,7 +33,6 @@ driver.get("http://taylorelectricoffice.football.cbssports.com/office-pool/stand
 driver.find_element_by_id("btnPrint").click()
 driver.save_screenshot("standings.png")
 
-emailAttachment = ".\\picks.csv"
 picksScreenshot = ".\\picks.png"
 standingsScreenshot = ".\\standings.png"
 yag = yagmail.SMTP('tspythonprojects@gmail.com')
