@@ -2,9 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-import bs4
 import yagmail
-import csv
 
 passFile = open("C:\\Users\\tsahli\\Documents\\selenium\\cbspass.txt", "r")
 lines = passFile.readlines()
