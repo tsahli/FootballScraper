@@ -1,6 +1,7 @@
 #!python3
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 import bs4
 import yagmail
 import csv
@@ -25,25 +26,20 @@ usernameField.send_keys(username)
 passwordField.send_keys(password)
 driver.find_element_by_name("_submit").click()
 
-currentPage = driver.page_source
-soup = bs4.BeautifulSoup(currentPage, "lxml")
-rows = soup.findAll("tr", {'class' : ["bg2","bgFan"]})
+driver.maximize_window()
+element = driver.find_element_by_id("nflheader")
+driver.execute_script("arguments[0].scrollIntoView();", element)
+driver.save_screenshot("picks.png")
 
-picks = []
-for row in rows:
-    thisPick = []
-    cells = row.findChildren("td")
-    for cell in cells:
-        thisPick.append(cell.get_text())
-    picks.append(thisPick)
-
-with open('picks.csv', 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerows(picks)
+driver.get("http://taylorelectricoffice.football.cbssports.com/office-pool/standings")
+driver.find_element_by_id("btnPrint").click()
+driver.save_screenshot("standings.png")
 
 emailAttachment = ".\\picks.csv"
+picksScreenshot = ".\\picks.png"
+standingsScreenshot = ".\\standings.png"
 yag = yagmail.SMTP('tspythonprojects@gmail.com')
-contents = ["Attached are this weeks picks.", emailAttachment]
+contents = ["Attached are this weeks picks and standings.", picksScreenshot, standingsScreenshot]
 yag.send(to=emailList, subject='This Weeks NFL Picks', contents=contents)
 
 driver.quit()
