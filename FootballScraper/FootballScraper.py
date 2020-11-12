@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import yagmail
+import sys
 
 passFile = open("C:\\Users\\tsahli\\Documents\\selenium\\cbspass.txt", "r")
 lines = passFile.readlines()
@@ -40,4 +41,3 @@ contents = ["Attached are this weeks picks and standings.", picksScreenshot, sta
 yag.send(to=emailList, subject='This Weeks NFL Picks', contents=contents)
 
 driver.quit()
-
