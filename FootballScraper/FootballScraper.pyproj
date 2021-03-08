@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>13c2c67b-2910-47f1-b48e-40744daf8484</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>PlayStationScraper.py</StartupFile>
+    <StartupFile>EpicPassScraper.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="FootballScraper.py" />
+    <Compile Include="EpicPassScraper.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlayStationScraper.py">
       <SubType>Code</SubType>
     </Compile>
